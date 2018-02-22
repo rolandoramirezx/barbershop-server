@@ -3,10 +3,7 @@ package com.rolandoramirezx.barbershopserver.barbershopserver.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -19,9 +16,11 @@ public class Barbershop implements Serializable {
     @GeneratedValue
     private Long id;
 
-    @OneToMany
+    private String name;
+
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<Barber> barbers;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<Customer> customers;
 
 }
